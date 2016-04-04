@@ -1,12 +1,9 @@
 class CfgPatches {
     class Claim_Vehicles {
-        requiredVersion = 0.1;
         requiredAddons[]=
         {
             "exile_client"
         };
-        units[] = {};
-        weapons[] = {};
     };
 };
 class CfgFunctions {
