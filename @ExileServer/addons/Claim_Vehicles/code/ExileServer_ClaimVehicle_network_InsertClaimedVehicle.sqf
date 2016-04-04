@@ -23,7 +23,7 @@ try
         throw "We no let you take other pee-pole vehicle bruh.";
     };
     if !(count _pinCode == 4) then {
-        throw "One of your players cannot count to 4 :) I didn't even send the client a response because I don't think they deserve it"
+        throw "One of your players cannot count to 4 :) I didn't even send the client a response because I don't think they deserve it";
     };
     _vehicle setVariable ["ExileIsLocked",1];
     _vehicle setVariable ["ExileOwnerUID", _ownerUID];
