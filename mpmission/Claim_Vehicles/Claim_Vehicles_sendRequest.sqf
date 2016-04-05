@@ -1,5 +1,13 @@
 /*
-    Claim vehicle and insert to DB.
+
+ 	Name: ExileServer_ClaimVehicle_network_InsertClaimedVehicle.sqf
+
+ 	Author: MezoPlays
+    Copyright (c) 2016 MezoPlays
+
+    This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+    To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0
+
 */
 _object = cursorTarget;
 _vehicleObj = _object;
