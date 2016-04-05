@@ -37,5 +37,5 @@ if (_object isKindOf "AIR" || _object isKindOf "CAR" || _object isKindOf "TANK")
         ["Whoops",["You need a codelock to do that!"]] call ExileClient_gui_notification_event_addNotification;
     };
 } else {
-    ["Whoops",["That's not a vehcile... derp"]] call ExileClient_gui_notification_event_addNotification;
+    ["Whoops",["That's not a Vehicle... derp"]] call ExileClient_gui_notification_event_addNotification;
 };
