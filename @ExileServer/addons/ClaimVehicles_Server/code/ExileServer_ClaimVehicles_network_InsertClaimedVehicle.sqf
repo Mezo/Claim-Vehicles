@@ -45,11 +45,11 @@ try
     _vehicle call ExileServer_object_vehicle_database_insert;
     _vehicle call ExileServer_object_vehicle_database_update;
     _responseType = "Success";
-    [_sessionID,"upgradeRequestResponse",[_exception,_responseType] call ExileServer_system_network_sendTo;
+    [_sessionID,"upgradeRequestResponse",[_exception,_responseType]] call ExileServer_system_network_sendTo;
 
 }
 catch
 {
     _responseType = "Whoops";
-    [_sessionID,"upgradeRequestResponse",[_exception,_responseType] call ExileServer_system_network_sendTo;
+    [_sessionID,"upgradeRequestResponse",[_exception,_responseType]] call ExileServer_system_network_sendTo;
 };
