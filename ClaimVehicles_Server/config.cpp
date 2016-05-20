@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class Claim_Vehicles
+	class ClaimVehicles_Server
 	{
 		requiredVersion = 0.1;
 		requiredAddons[] = {"exile_client","exile_assets","exile_server_config"};
@@ -12,11 +12,11 @@ class CfgPatches
 };
 class CfgFunctions
 {
-    class Claim_Vehicles
+    class ClaimVehicles_Server
     {
         class Bootstrap
         {
-            file = "claim_vehicles\bootstrap";
+            file = "ClaimVehicles_Server\bootstrap";
             class preInit
             {
                 preInit = 1;
@@ -26,5 +26,13 @@ class CfgFunctions
                 postInit = 1;
             };
         };
+    };
+};
+class CfgNetworkMessages
+{
+    class saveVehicleRequest
+    {
+        module = "ClaimVehicles";
+        parameters[] = {"STRING","STRING"};
     };
 };

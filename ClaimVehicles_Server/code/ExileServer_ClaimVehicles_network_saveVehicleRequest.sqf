@@ -23,28 +23,42 @@ try
 {
     if !(alive _playerObject) then
     {
-        throw "Arma is aids and it gave a player a scroll action while they were dead.";
+        throw "You must be alive to claim a vehicle!";
     };
     if !(_vehicle isKindOf "AIR" || _vehicle isKindOf "CAR" || _vehicle isKindOf "TANK") then
     {
-        throw "Somebody tried to claim a chicken or some other shit.";
+        throw "That's not a vehicle!";
     };
-    if (_vehicle getVariable "ExileIsPersistent") then
+    if (_vehicle getVariable ["ExileIsPersistent", true]) then
     {
-        throw "We no let you take other pee-pole vehicle bruh.";
+        throw "This vehicle is already claimed!";
     };
-    if !(count _pinCode == 4) then {
-        throw "One of your players cannot count to 4 :) I didn't even send the client a response because I don't think they deserve it";
+    if !(isNil {_vehicleObj getVariable "SC_drivenVehicle"}) then
+    {
+        throw "This vehicle is owned by the server!";
     };
-    _vehicle setVariable ["ExileIsLocked",1];
+    if !(count _pinCode == 4) then
+    {
+        throw "Your pincode must be 4 digits!";
+    };
+
+    _playerObject removeMagazineGlobal "Exile_Item_CodeLock";
+
+    _vehicle setVariable ["ExileIsLocked",-1];
     _vehicle setVariable ["ExileOwnerUID", _ownerUID];
     _vehicle setVariable ["ExileAccessCode", _pinCode];
-    _vehicle setVariable ["ExileIsPersistent", true, true];
+    _vehicle setVariable ["ExileIsPersistent", true];
+
     _vehicle lock 2;
+
     _vehicle call ExileServer_object_vehicle_database_insert;
     _vehicle call ExileServer_object_vehicle_database_update;
+
+    [_sessionID,"notificationRequest",["Success",["You're now the owner of this vehicle!"]]] call ExileServer_system_network_send_to;
+
 }
 catch
 {
-    _exception call ExileServer_util_log;
+    [_sessionID,"notificationRequest",["Whoops",[_exception]]] call ExileServer_system_network_send_to;
 };
+removeMagazineGlobal

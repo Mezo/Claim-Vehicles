@@ -20,7 +20,7 @@ private ['_code', '_function', '_file'];
 }
 forEach
 [
-    ['ExileServer_ClaimVehicle_network_InsertClaimedVehicle','claim_vehicles\code\ExileServer_ClaimVehicle_network_InsertClaimedVehicle.sqf']
+    ['ExileServer_ClaimVehicles_network_saveVehicleRequest','ClaimVehicles_Server\code\ExileServer_ClaimVehicles_network_saveVehicleRequest.sqf']
 ];
 
 true
