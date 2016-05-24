@@ -16,6 +16,10 @@ _object = typeOf _object;
 
 try
 {
+    if !(local _vehicleObj) then
+    {
+        throw "Get in the drivers seat first";
+    };
     if !(_object isKindOf "AIR" || _object isKindOf "CAR" || _object isKindOf "TANK") then
     {
         throw "That's not a Vehicle... derp!";
