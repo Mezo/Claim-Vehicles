@@ -54,10 +54,11 @@ try
     _vehicle call ExileServer_object_vehicle_database_insert;
     _vehicle call ExileServer_object_vehicle_database_update;
 
-    [_sessionID,"notificationRequest",["Success",["You're now the owner of this vehicle!"]]] call ExileServer_system_network_send_to;
+
+    [_sessionID, "toastRequest", ["SuccessTitleOnly", ["You're not the owner of this vehicle!"]]] call ExileServer_system_network_send_to;
 
 }
 catch
 {
-    [_sessionID,"notificationRequest",["Whoops",[_exception]]] call ExileServer_system_network_send_to;
+    [_sessionID, "toastRequest", ["ErrorTitleAndText", ["Claim Vehicles", _exception]]] call ExileServer_system_network_send_to;
 };
