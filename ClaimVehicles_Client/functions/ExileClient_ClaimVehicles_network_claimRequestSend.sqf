@@ -45,5 +45,5 @@ try
 }
 catch
 {
-    ["Whoops",[_exception]] call ExileClient_gui_notification_event_addNotification;
+    ["ErrorTitleAndText", ["Claim Vehicles", _exception]] call ExileClient_gui_toaster_addTemplateToast;
 };
