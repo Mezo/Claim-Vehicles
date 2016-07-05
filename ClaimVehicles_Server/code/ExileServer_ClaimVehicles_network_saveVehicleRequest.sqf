@@ -49,13 +49,13 @@ try
     _vehicle setVariable ["ExileAccessCode", _pinCode];
     _vehicle setVariable ["ExileIsPersistent", true];
 
-    _vehicle lock 2;
+    //_vehicle lock 2; //If someone claims a vehicle that doesnt meat the conditions above, it locks it rendering it usless.
 
     _vehicle call ExileServer_object_vehicle_database_insert;
     _vehicle call ExileServer_object_vehicle_database_update;
 
 
-    [_sessionID, "toastRequest", ["SuccessTitleOnly", ["You're not the owner of this vehicle!"]]] call ExileServer_system_network_send_to;
+    [_sessionID, "toastRequest", ["SuccessTitleOnly", ["You're now the owner of this vehicle!"]]] call ExileServer_system_network_send_to;
 
 }
 catch
