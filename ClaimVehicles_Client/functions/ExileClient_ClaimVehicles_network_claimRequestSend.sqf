@@ -38,7 +38,7 @@ try
 
     ["saveVehicleRequest",[_objectNetId,_pinCode]] call ExileClient_system_network_send;
 
-    _vehicleObj lock 2;
+    //_vehicleObj lock 2; // If someone claims a vehicle that doesnt meat the desired conditions, the vehicle is still locked, thus usless.
 
     call ExileClient_gui_interactionMenu_unhook;
 
