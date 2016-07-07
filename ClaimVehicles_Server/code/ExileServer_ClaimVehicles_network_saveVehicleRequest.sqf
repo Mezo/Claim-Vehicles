@@ -61,4 +61,5 @@ try
 catch
 {
     [_sessionID, "toastRequest", ["ErrorTitleAndText", ["Claim Vehicles", _exception]]] call ExileServer_system_network_send_to;
+    _vehicle lock 0; //Make sure the vehicle is unlocked if this stuff fails. Cheers John ;)
 };
