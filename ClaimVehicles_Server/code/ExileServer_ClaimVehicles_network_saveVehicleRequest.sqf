@@ -1,13 +1,9 @@
 /*
-
- 	Name: ExileServer_ClaimVehicle_network_InsertClaimedVehicle.sqf
-
- 	Author: MezoPlays
+    Name: ExileServer_ClaimVehicle_network_InsertClaimedVehicle.sqf
+    Author: MezoPlays
     Copyright (c) 2016 MezoPlays
-
     This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
     To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0
-
 */
 private["_sessionID","_package","_objectNetID","_pinCode","_ownerUID","_vehicle"];
 _sessionID = _this select 0;
@@ -49,7 +45,7 @@ try
     _vehicle setVariable ["ExileAccessCode", _pinCode];
     _vehicle setVariable ["ExileIsPersistent", true];
 
-    //_vehicle lock 2; //If someone claims a vehicle that doesnt meat the conditions above, it locks it rendering it usless.
+    _vehicle lock 0;
 
     _vehicle call ExileServer_object_vehicle_database_insert;
     _vehicle call ExileServer_object_vehicle_database_update;
@@ -61,4 +57,5 @@ try
 catch
 {
     [_sessionID, "toastRequest", ["ErrorTitleAndText", ["Claim Vehicles", _exception]]] call ExileServer_system_network_send_to;
+    //_vehicle lock 0; //Make sure the vehicle is unlocked if this stuff fails. Cheers John ;)
 };

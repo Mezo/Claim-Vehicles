@@ -14,6 +14,11 @@ _vehicleObj = _object;
 _objectNetId = netId _object;
 _object = typeOf _object;
 
+if !("Exile_Item_Codelock" in (player call ExileClient_util_playerCargo_list)) exitWith 
+{
+    ["ErrorTitleAndText", ["Claim Vehicles", "You require a code lock to do this"]] call ExileClient_gui_toaster_addTemplateToast;
+};
+
 try
 {
     if !(local _vehicleObj) then
@@ -38,7 +43,7 @@ try
 
     ["saveVehicleRequest",[_objectNetId,_pinCode]] call ExileClient_system_network_send;
 
-    //_vehicleObj lock 2; // If someone claims a vehicle that doesnt meat the desired conditions, the vehicle is still locked, thus usless.
+    //_vehicleObj lock 2;
 
     call ExileClient_gui_interactionMenu_unhook;
 
@@ -46,4 +51,5 @@ try
 catch
 {
     ["ErrorTitleAndText", ["Claim Vehicles", _exception]] call ExileClient_gui_toaster_addTemplateToast;
+    //_vehicleObj lock 0;
 };
