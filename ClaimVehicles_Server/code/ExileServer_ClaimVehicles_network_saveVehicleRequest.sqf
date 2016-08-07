@@ -49,7 +49,7 @@ try
     _vehicle setVariable ["ExileAccessCode", _pinCode];
     _vehicle setVariable ["ExileIsPersistent", true];
 
-    _vehicle lock 2;
+    _vehicle lock 0;
 
     _vehicle call ExileServer_object_vehicle_database_insert;
     _vehicle call ExileServer_object_vehicle_database_update;

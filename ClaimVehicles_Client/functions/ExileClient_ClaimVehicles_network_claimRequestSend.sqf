@@ -38,7 +38,7 @@ try
 
     ["saveVehicleRequest",[_objectNetId,_pinCode]] call ExileClient_system_network_send;
 
-    _vehicleObj lock 2;
+    _vehicleObj lock 0;
 
     call ExileClient_gui_interactionMenu_unhook;
 
